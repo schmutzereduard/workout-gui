@@ -1,12 +1,7 @@
-
 function Home() {
 
     return (
-        <div
-            style={{
-                backgroundColor: "black",
-            }}
-        >
+        <div>
 
         </div>
     );

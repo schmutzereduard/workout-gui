@@ -2,36 +2,20 @@ import instance from "../axios/workout-api-axios";
 
 class WorkoutApi {
 
-    static getCategories() {
-        return instance.get("/categories");
+    static getWorkouts() {
+        return instance.get("/workouts");
     }
 
-    static addCategory(category) {
-        return instance.post('/categories', category);
+    static addWorkout(workout) {
+        return instance.post('/workouts', workout);
     }
 
-    static updateCategory(category) {
-        return instance.put('/categories', category);
+    static updateWorkout(workout) {
+        return instance.put('/workouts', workout);
     }
 
-    static deleteCategory(id) {
-        return instance.delete(`/categories/${id}`);
-    }
-
-    static getMuscles() {
-        return instance.get("/muscles");
-    }
-
-    static addMuscle(muscle) {
-        return instance.post('/muscles', muscle);
-    }
-
-    static updateMuscle(muscle) {
-        return instance.put('/muscles', muscle);
-    }
-
-    static deleteMuscle(id) {
-        return instance.delete(`/muscles/${id}`);
+    static deleteWorkout(id) {
+        return instance.delete(`/workouts/${id}`);
     }
 
     static getExercises() {

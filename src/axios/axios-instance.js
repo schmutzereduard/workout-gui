@@ -30,7 +30,7 @@ export function createAxiosInstance(baseURL) {
         }
     );
 
-    axiosRetry(instance, { retries: process.env.AXIOS_RETRIES });
+    axiosRetry(instance, { retries: process.env.REACT_APP_AXIOS_RETRIES });
 
     return instance;
 }
