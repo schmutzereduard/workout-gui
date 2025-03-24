@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import './App.css';
 import Sidebar from "../sidebar/Sidebar";
 import Sessions from "../pages/Sessions";
+import Session from "../pages/Session";
 
 function App() {
 
@@ -17,6 +18,9 @@ function App() {
                     />
                     <Route
                         path="/sessions" element={<Sessions />}
+                    />
+                    <Route
+                        path="/sessions/:id" element={<Session />}
                     />
                 </Routes>
             </div>

@@ -40,13 +40,23 @@ export const SessionTable = ({ sessions, selectedRows, setSelectedRows }) => (
     <DataTable
         title="Workout Sessions"
         columns={[
-            { field: "id", headerName: "ID" },
-            { field: "date", headerName: "Date" },
-            { field: "notes", headerName: "Notes" },
             {
-                field: "workouts",
-                headerName: "Workouts",
-                renderCell: ({ row }) => row.workouts?.map(w => w.name).join(", ") || "No Workouts"
+                field: "id",
+                headerName: "ID"
+            },
+            {
+                field: "trainingDay",
+                headerName: "Date",
+                renderCell: ({ row }) => row.trainingDay.date
+            },
+            {
+                field: "workout",
+                headerName: "Workout",
+                renderCell: ({ row }) => row.workout.name
+            },
+            {
+                field: "notes",
+                headerName: "Notes",
             }
         ]}
         data={sessions}
