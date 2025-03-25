@@ -45,9 +45,12 @@ export const SessionTable = ({ sessions, selectedRows, setSelectedRows }) => (
                 headerName: "ID"
             },
             {
-                field: "trainingDay",
+                field: "user",
+                headerName: "User"
+            },
+            {
+                field: "date",
                 headerName: "Date",
-                renderCell: ({ row }) => row.trainingDay.date
             },
             {
                 field: "workout",

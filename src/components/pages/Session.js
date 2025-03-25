@@ -13,15 +13,7 @@ function Session() {
         dispatch(fetchSessions());
     }, [dispatch]);
 
-    const session = id === "0" ?
-        {
-            "trainingDay":{
-
-            },
-            "workout": {
-
-            }
-        } : sessions.find(session => session.id === parseInt(id));
+    const session = sessions.find(session => session.id === parseInt(id));
 
     return (
         <>
