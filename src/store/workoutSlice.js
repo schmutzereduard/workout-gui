@@ -25,11 +25,11 @@ export const updateWorkout = createAsyncThunk(
     }
 );
 
-export const deleteWorkout = createAsyncThunk(
+export const deleteWorkouts = createAsyncThunk(
     "workouts/deleteWorkout",
-    async (workoutId) => {
-        await WorkoutApi.deleteWorkout(workoutId);
-        return workoutId;
+    async (ids) => {
+        await WorkoutApi.deleteWorkouts(ids);
+        return ids;
     }
 );
 
@@ -70,11 +70,11 @@ const workoutsSlice = createSlice({
                 state.loading = false;
                 state.workouts = state.workouts.map(workout => workout.id === action.payload.id ? action.payload : workout);
             })
-            .addCase(deleteWorkout.pending, handlePending)
-            .addCase(deleteWorkout.rejected, handleRejected)
-            .addCase(deleteWorkout.fulfilled, (state, action) => {
+            .addCase(deleteWorkouts.pending, handlePending)
+            .addCase(deleteWorkouts.rejected, handleRejected)
+            .addCase(deleteWorkouts.fulfilled, (state, action) => {
                 state.loading = false;
-                state.workouts = state.workouts.filter(workout => workout.id !== action.payload);
+                state.workouts = state.workouts.filter(workout => !action.payload.includes(workout.id));
             });
     },
 });

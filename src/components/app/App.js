@@ -5,6 +5,8 @@ import './App.css';
 import Sidebar from "../sidebar/Sidebar";
 import Sessions from "../pages/Sessions";
 import Session from "../pages/Session";
+import Workouts from "../pages/Workouts";
+import Workout from "../pages/Workout";
 
 function App() {
 
@@ -21,6 +23,12 @@ function App() {
                     />
                     <Route
                         path="/sessions/:id" element={<Session />}
+                    />
+                    <Route
+                        path="/workouts" element={<Workouts />}
+                    />
+                    <Route
+                        path="/workouts/:id" element={<Workout />}
                     />
                 </Routes>
             </div>

@@ -25,11 +25,11 @@ export const updateSession = createAsyncThunk(
     }
 );
 
-export const deleteSession = createAsyncThunk(
+export const deleteSessions = createAsyncThunk(
     "sessions/deleteSession",
-    async (sessionId) => {
-        await WorkoutApi.deleteSession(sessionId);
-        return sessionId;
+    async (ids) => {
+        await WorkoutApi.deleteSessions(ids);
+        return ids;
     }
 );
 
@@ -70,11 +70,11 @@ const sessionsSlice = createSlice({
                 state.loading = false;
                 state.sessions = state.sessions.map(session => session.id === action.payload.id ? action.payload : session);
             })
-            .addCase(deleteSession.pending, handlePending)
-            .addCase(deleteSession.rejected, handleRejected)
-            .addCase(deleteSession.fulfilled, (state, action) => {
+            .addCase(deleteSessions.pending, handlePending)
+            .addCase(deleteSessions.rejected, handleRejected)
+            .addCase(deleteSessions.fulfilled, (state, action) => {
                 state.loading = false;
-                state.sessions = state.sessions.filter(session => session.id !== action.payload);
+                state.sessions = state.sessions.filter(session => !action.payload.includes(session.id));
             });
     },
 });

@@ -14,8 +14,8 @@ class WorkoutApi {
         return instance.put('/workouts', workout);
     }
 
-    static deleteWorkout(id) {
-        return instance.delete(`/workouts/${id}`);
+    static deleteWorkouts(ids) {
+        return instance.delete(`/workouts`, { data: ids });
     }
 
     static getExercises() {
@@ -30,8 +30,8 @@ class WorkoutApi {
         return instance.put('/exercises', exercise);
     }
 
-    static deleteExercise(id) {
-        return instance.delete(`/exercises/${id}`);
+    static deleteExercises(ids) {
+        return instance.delete(`/exercises`, { data: ids });
     }
 
     static getSessions() {
@@ -46,8 +46,9 @@ class WorkoutApi {
         return instance.put('/sessions', session);
     }
 
-    static deleteSession(id) {
-        return instance.delete(`/sessions/${id}`);
+    static deleteSessions(ids) {
+        console.log(ids);
+        return instance.delete(`/sessions`, { data: ids });
     }
 }
 

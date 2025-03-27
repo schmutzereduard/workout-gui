@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchSessions, addSession} from "../../store/sessionSlice"; // Import addSession
+import {fetchSessions, addSession, deleteSessions} from "../../store/sessionSlice"; // Import addSession
 import {SessionTable} from "../tables/Tables";
 import {
     Box,
@@ -64,6 +64,10 @@ function Sessions() {
         setWorkoutId("");
     };
 
+    const handleDeleteSessions = () => {
+      dispatch(deleteSessions(selectedRows));
+    };
+
     return (
         <>
             <Box display="flex" justifyContent={"flex-start"} gap={2}>
@@ -84,6 +88,7 @@ function Sessions() {
 
                 <Button
                     variant="contained"
+                    onClick={() => handleDeleteSessions()}
                     color="error"
                     disabled={!selectedRows.length}
                 >
