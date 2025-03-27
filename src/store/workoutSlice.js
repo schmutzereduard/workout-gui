@@ -26,7 +26,7 @@ export const updateWorkout = createAsyncThunk(
 );
 
 export const deleteWorkouts = createAsyncThunk(
-    "workouts/deleteWorkout",
+    "workouts/deleteWorkouts",
     async (ids) => {
         await WorkoutApi.deleteWorkouts(ids);
         return ids;

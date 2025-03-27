@@ -25,11 +25,11 @@ export const updateExercise = createAsyncThunk(
     }
 );
 
-export const deleteExercise = createAsyncThunk(
-    "exercises/deleteExercise",
-    async (exerciseId) => {
-        await WorkoutApi.deleteExercise(exerciseId);
-        return exerciseId;
+export const deleteExercises = createAsyncThunk(
+    "exercises/deleteExercises",
+    async (ids) => {
+        await WorkoutApi.deleteExercises(ids);
+        return ids;
     }
 );
 
@@ -70,11 +70,11 @@ const exercisesSlice = createSlice({
                 state.loading = false;
                 state.exercises = state.exercises.map(exercise => exercise.id === action.payload.id ? action.payload : exercise);
             })
-            .addCase(deleteExercise.pending, handlePending)
-            .addCase(deleteExercise.rejected, handleRejected)
-            .addCase(deleteExercise.fulfilled, (state, action) => {
+            .addCase(deleteExercises.pending, handlePending)
+            .addCase(deleteExercises.rejected, handleRejected)
+            .addCase(deleteExercises.fulfilled, (state, action) => {
                 state.loading = false;
-                state.exercises = state.exercises.filter(exercise => exercise.id !== action.payload);
+                state.exercises = state.exercises.filter(exercise => !action.payload.includes(exercise.id));
             });
     },
 });

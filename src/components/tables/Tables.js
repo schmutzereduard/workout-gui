@@ -3,6 +3,7 @@ import { darkTheme } from "../../utils/Themes";
 import { Paper, TableContainer, ThemeProvider } from "@mui/material";
 
 const DataTable = ({ title, columns, data, selectedRows, setSelectedRows }) => {
+
     return (
         <ThemeProvider theme={darkTheme}>
             <TableContainer component={Paper}>
@@ -28,11 +29,55 @@ const DataTable = ({ title, columns, data, selectedRows, setSelectedRows }) => {
     );
 };
 
-export const ExerciseTable = ({ exercises }) => (
+export const ExerciseTable = ({ exercises, selectedRows, setSelectedRows }) => (
+
     <DataTable
         title="Exercises"
-        columns={[{ field: "id", headerName: "ID" }, { field: "name", headerName: "Name" }]}
+        columns={[
+            {
+                field: "id",
+                headerName: "ID"
+            },
+            {
+                field: "name",
+                headerName: "Name",
+                width: 500
+            },
+            {
+                field: "cues",
+                headerName: "Cues",
+                width: 500
+            }
+            ]}
         data={exercises}
+        selectedRows={selectedRows}
+        setSelectedRows={setSelectedRows}
+    />
+);
+
+export const WorkoutTable = ({ workouts, selectedRows, setSelectedRows }) => (
+
+    <DataTable
+        title="Workouts"
+        columns={[
+            {
+                field: "id",
+                headerName: "ID"
+            },
+            {
+                field: "name",
+                headerName: "Name"
+            },
+            {
+                field: "exercises",
+                headerName: "Exercises",
+                width: 1000,
+                renderCell: ({ row }) => row.exercises?.map(e => e.name).join(", ") || "No Exercises"
+            }
+        ]}
+        data={workouts}
+        selectedRows={selectedRows}
+        setSelectedRows={setSelectedRows}
     />
 );
 
@@ -60,6 +105,7 @@ export const SessionTable = ({ sessions, selectedRows, setSelectedRows }) => (
             {
                 field: "notes",
                 headerName: "Notes",
+                width: 1000
             }
         ]}
         data={sessions}
@@ -83,21 +129,5 @@ export const WorkingSetTable = ({ workingSets }) => (
             }
         ]}
         data={workingSets}
-    />
-);
-
-export const WorkoutTable = ({ workouts }) => (
-    <DataTable
-        title="Workouts"
-        columns={[
-            { field: "id", headerName: "ID" },
-            { field: "name", headerName: "Name" },
-            {
-                field: "exercises",
-                headerName: "Exercises",
-                renderCell: ({ row }) => row.exercises?.map(e => e.name).join(", ") || "No Exercises"
-            }
-        ]}
-        data={workouts}
     />
 );

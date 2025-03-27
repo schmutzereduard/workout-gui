@@ -26,7 +26,7 @@ export const updateSession = createAsyncThunk(
 );
 
 export const deleteSessions = createAsyncThunk(
-    "sessions/deleteSession",
+    "sessions/deleteSessions",
     async (ids) => {
         await WorkoutApi.deleteSessions(ids);
         return ids;

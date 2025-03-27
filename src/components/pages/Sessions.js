@@ -81,7 +81,7 @@ function Sessions() {
                 <Button
                     variant="contained"
                     onClick={() => navigate(`/sessions/${selectedRows[0]}`)}
-                    disabled={!selectedRows.length}
+                    disabled={selectedRows.length !== 1}
                 >
                     {"Edit"}
                 </Button>
